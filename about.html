@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+about.html — Your About Page
+================================================================================
+
+This is a secondary page. It shares the same CSS file as index.html, which means
+it automatically has the same styling. The header and footer are duplicated here
+to keep navigation consistent across pages.
+
+In larger projects, you'd use templates or includes to avoid this duplication.
+For now, if you change the header in one file, remember to change it in the other.
+
+================================================================================
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about me and my journey">
+    <!--
+    Each page can have its own description. This helps search engines understand
+    what this particular page is about.
+    -->
+
+    <title>About Me | My Portfolio</title>
+    <!--
+    A common pattern: [Page Name] | [Site Name]
+    This helps users identify tabs and appears in search results.
+    -->
+
+    <link rel="stylesheet" href="styles.css">
+    <!--
+    Same stylesheet as index.html—this is why both pages look consistent.
+    -->
+
+    <!-- Exercise 25: Add your favicon link here too
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    -->
+</head>
+
+<body>
+
+    <header>
+        <!--
+        This header is identical to index.html. On a real site, you'd want
+        to keep these in sync.
+        -->
+        <div class="container header-content">
+            <a href="index.html" class="logo">My Portfolio</a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <!--
+                    Notice class="active" on the About link. This indicates
+                    the current page. You could style .active differently in
+                    CSS to show users where they are.
+                    -->
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <!--
+                    index.html#skills links to the index page and then scrolls
+                    to the element with id="skills". This works across pages.
+                    -->
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="section page-header">
+            <!--
+            A simpler header for secondary pages—not as tall as the homepage hero.
+            -->
+            <div class="container">
+                <h1>About Me</h1>
+                <p class="page-subtitle">Get to know me better</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <article class="about-content">
+                    <!--
+                    The <article> element indicates self-contained content that
+                    could stand on its own. It's appropriate for blog posts,
+                    news articles, or in this case, an about-me section.
+                    -->
+
+                    <h2>My Background</h2>
+
+                    <p>
+                        This is where you tell your story. Where are you from?
+                        What led you to where you are today? What experiences
+                        have shaped your perspective?
+                    </p>
+
+                    <p>
+                        Write authentically. People connect with genuine stories,
+                        not polished corporate speak. What makes you unique?
+                        What challenges have you overcome?
+                    </p>
+
+                    <!--
+                    → Exercise 25: Replace all this placeholder content with
+                      real information about yourself.
+                    -->
+
+                    <h2>Why Web Development?</h2>
+
+                    <p>
+                        What drew you to learning web development? Was it a
+                        specific project? A career goal? Curiosity? Share your
+                        motivation here.
+                    </p>
+
+                    <div class="card">
+                        <h3>What I'm Currently Learning</h3>
+
+                        <ul class="skills-list">
+                            <li>HTML5 & Semantic Markup</li>
+                            <li>CSS3 & Responsive Design</li>
+                            <li>Version Control with Git</li>
+                            <li>GitHub & GitHub Pages</li>
+                        </ul>
+                        <!--
+                        Update this list with what you're actually learning.
+                        -->
+                    </div>
+
+                    <h2>My Goals</h2>
+
+                    <p>
+                        Where do you see yourself going? What do you want to build?
+                        What problems do you want to solve? Setting intentions can
+                        help focus your learning journey.
+                    </p>
+
+                </article>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <!--
+            CTA stands for "call to action"—encouraging visitors to do something.
+            -->
+            <div class="container">
+                <h2>Want to See My Work?</h2>
+                <p>Check out my portfolio homepage or get in touch.</p>
+                <div class="cta-buttons">
+                    <a href="index.html" class="btn btn-primary">View Portfolio</a>
+                    <a href="index.html#contact" class="btn">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

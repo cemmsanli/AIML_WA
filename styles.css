@@ -1,0 +1,579 @@
+/*
+================================================================================
+styles.css — The Stylesheet
+================================================================================
+
+This file controls how your HTML looks. Both index.html and about.html link
+to this same file, which is why they share the same styling.
+
+The file is organized into sections. Use the table of contents below to find
+specific areas, or just scroll through to explore.
+
+Table of Contents:
+1. CSS Variables
+2. Reset & Base Styles
+3. Typography
+4. Layout & Container
+5. Header & Navigation
+6. Hero Section
+7. Sections & Cards
+8. Buttons
+9. About Page
+10. Footer
+11. Images
+12. Utilities
+13. Responsive Styles (Media Queries)
+
+================================================================================
+*/
+
+
+/*
+================================================================================
+1. CSS VARIABLES
+================================================================================
+
+Variables let you define values once and reuse them throughout. They're defined
+with -- prefix and used with var(). Changing a variable here changes it
+everywhere it's used.
+
+→ Exercise 13: Try changing these colors and watch what happens
+*/
+
+:root {
+    /* Colors */
+    --primary-color: #2c3e50;
+    --secondary-color: #34495e;
+    --accent-color: #3498db;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+
+    /* Spacing - rem units scale with user's font size preferences */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+
+    /* Typography */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Animation */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+
+    /* Border radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/*
+================================================================================
+2. RESET & BASE STYLES
+================================================================================
+
+Browsers have default styles that vary. These rules create a consistent
+starting point.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+    box-sizing: border-box makes width include padding and border.
+    Without this, a 200px wide element with 20px padding would actually
+    be 240px wide. With border-box, it stays 200px and the content shrinks.
+    */
+}
+
+html {
+    scroll-behavior: smooth;
+    /*
+    Makes anchor links (#section) scroll smoothly instead of jumping.
+    → Exercise 12: Click a navigation link to see this in action
+    */
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /*
+    Flexbox on body with column direction helps position the footer.
+    → Exercise 21: See how margin-top: auto on footer uses this
+    */
+}
+
+
+/*
+================================================================================
+3. TYPOGRAPHY
+================================================================================
+*/
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+p:last-child {
+    margin-bottom: 0;
+    /* Removes bottom margin from the last paragraph in a container */
+}
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    /*
+    Focus styles are essential for keyboard navigation.
+    → Exercise 23: Press Tab to move through links and see this outline
+    */
+}
+
+
+/*
+================================================================================
+4. LAYOUT & CONTAINER
+================================================================================
+*/
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    /*
+    max-width prevents content from stretching too wide on large screens.
+    margin: 0 auto centers the container (auto left/right margins split
+    available space evenly).
+    
+    → Exercise 19: Try changing max-width or removing margin: 0 auto
+    */
+}
+
+
+/*
+================================================================================
+5. HEADER & NAVIGATION
+================================================================================
+
+→ Exercise 20: Explore position: sticky here
+*/
+
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-sm) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /*
+    position: sticky + top: 0 makes the header stick to the top when you scroll.
+    z-index ensures it appears above other content.
+    
+    Try changing sticky to fixed or relative and scroll your page.
+    */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*
+    Flexbox places logo on left, nav on right.
+    justify-content: space-between pushes them to opposite ends.
+    */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--light-gray);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+    /* gap creates space between flex items */
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: var(--spacing-xs) 0;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.main-nav a:focus {
+    outline: 2px solid var(--white);
+    outline-offset: 2px;
+}
+
+
+/*
+================================================================================
+6. HERO SECTION
+================================================================================
+
+→ Exercise 14: Try changing the background to a gradient
+→ Exercise 17: Experiment with text-align
+*/
+
+.hero {
+    background-color: var(--primary-color);
+    /*
+    Try replacing with:
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    */
+    color: var(--white);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.hero h1 {
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-text {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-md);
+    opacity: 0.9;
+}
+
+
+/*
+================================================================================
+7. SECTIONS & CARDS
+================================================================================
+
+→ Exercise 15: Explore padding here
+→ Exercise 16: Experiment with border-radius and borders
+→ Exercise 18: Try adding section-specific styles
+→ Exercise 22: Add hover effects
+*/
+
+.section {
+    padding: var(--spacing-xl) 0;
+}
+
+.page-header {
+    background-color: var(--light-gray);
+    text-align: center;
+    padding: var(--spacing-lg) 0;
+}
+
+.page-subtitle {
+    color: var(--text-light);
+    font-size: 1.125rem;
+}
+
+.card {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    /*
+    The transition property here makes hover animations smooth.
+    → Exercise 22: Add the .card:hover rule below
+    */
+}
+
+/* → Exercise 22: Uncomment to add hover effects
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+*/
+
+/* → Exercise 18: Uncomment to style the skills section differently
+.skills-section {
+    background-color: var(--light-gray);
+}
+
+.skills-section .card {
+    border-left: 4px solid var(--accent-color);
+}
+*/
+
+/* Contact section styling (for Exercise 11) */
+.contact-section {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+}
+
+.contact-section h2 {
+    color: var(--white);
+}
+
+.contact-section .btn {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border-color: var(--white);
+}
+
+.contact-section .btn:hover {
+    background-color: var(--light-gray);
+    border-color: var(--light-gray);
+}
+
+
+/*
+================================================================================
+8. BUTTONS
+================================================================================
+*/
+
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+    text-decoration: none;
+}
+
+.btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/*
+================================================================================
+9. ABOUT PAGE
+================================================================================
+*/
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    /* Narrower width for readability */
+}
+
+.about-content h2 {
+    margin-top: var(--spacing-lg);
+}
+
+.about-content h2:first-child {
+    margin-top: 0;
+}
+
+.skills-list {
+    list-style-position: inside;
+    padding-left: var(--spacing-sm);
+}
+
+.skills-list li {
+    padding: var(--spacing-xs) 0;
+}
+
+
+/*
+================================================================================
+10. FOOTER
+================================================================================
+
+→ Exercise 21: Notice margin-top: auto and how it works with flexbox on body
+*/
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    margin-top: auto;
+    /*
+    margin-top: auto pushes the footer to the bottom because body is
+    display: flex with flex-direction: column. The auto margin takes up
+    all available space above the footer.
+    */
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+
+/*
+================================================================================
+11. IMAGES
+================================================================================
+
+→ Exercise 9: Add an image and use these styles
+*/
+
+.profile-image {
+    margin: var(--spacing-md) auto;
+    max-width: 400px;
+}
+
+.profile-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    /*
+    width: 100% + height: auto keeps the image's aspect ratio.
+    The image scales to fit its container without distorting.
+    */
+}
+
+.profile-image figcaption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-xs);
+}
+
+
+/*
+================================================================================
+12. UTILITIES
+================================================================================
+
+Small helper classes for common needs.
+*/
+
+.text-center { text-align: center; }
+.text-light { color: var(--text-light); }
+
+
+/*
+================================================================================
+13. RESPONSIVE STYLES (MEDIA QUERIES)
+================================================================================
+
+Media queries apply styles only when certain conditions are met.
+These rules take effect when the screen is 768px or narrower.
+
+→ Exercise 24: Add more breakpoints or modify these
+*/
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        /* Stack logo and nav vertically on smaller screens */
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        padding: var(--spacing-lg) 0;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+}
+
+/* → Exercise 24: Try adding this smaller breakpoint
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+}
+*/
+
+
+/*
+================================================================================
+END OF STYLESHEET
+================================================================================
+
+As you work through the exercises, you'll encounter most of these rules.
+The comments point to relevant exercises, but feel free to experiment with
+anything that catches your interest.
+
+If something breaks, that's useful information—you've learned what that
+rule does. You can always undo changes or start fresh.
+*/

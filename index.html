@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+index.html — Your Homepage
+================================================================================
+
+This is the main page of your site. Everything below follows a pattern you'll
+see in most web pages: a DOCTYPE, then an html element containing head and body.
+
+The comments throughout this file explain what things are called and roughly
+what they do. You don't need to read every comment before starting—skim them
+when you're curious, or when you're trying to find something specific.
+
+Feel free to experiment. If you break something, you can always look at the
+original or fork the repository again.
+
+================================================================================
+-->
+<html lang="en">
+<!--
+The <html> element wraps everything. The lang="en" attribute tells browsers
+and screen readers that the content is in English.
+-->
+
+<head>
+    <!--
+    The <head> contains information ABOUT the page—metadata that doesn't appear
+    on the page itself but affects how it displays and how search engines see it.
+    -->
+
+    <meta charset="UTF-8">
+    <!--
+    Character encoding. UTF-8 supports virtually all characters from all
+    languages. Always include this first.
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    This makes the page work properly on mobile devices. Without it, phones
+    would display your site as a tiny zoomed-out desktop page.
+    -->
+
+    <meta name="description" content="A personal portfolio website">
+    <!--
+    Search engines might display this in search results. Update it to describe
+    your site.
+    -->
+
+    <title>My Portfolio</title>
+    <!--
+    This appears in the browser tab. It's also what shows in search results
+    and bookmarks. Update it to reflect your site.
+    
+    → Exercise 3: Change this to your name or site name
+    -->
+
+    <link rel="stylesheet" href="styles.css">
+    <!--
+    This connects your HTML to the CSS file. Without this link, none of your
+    styles would apply.
+    -->
+
+    <!-- Exercise 25: Add your favicon link here when you're ready
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    -->
+</head>
+
+<body>
+    <!--
+    Everything visible on the page goes in the <body>. The structure here uses
+    semantic elements: <header>, <main>, <footer> instead of generic <div>s.
+    These communicate meaning to screen readers and search engines.
+    -->
+
+    <header>
+        <!--
+        The site header typically contains the logo/site name and main navigation.
+        This appears at the top of every page.
+        
+        → Exercise 20: The CSS makes this "sticky"—scroll down your page and
+          notice how the header stays visible at the top.
+        -->
+        <div class="container header-content">
+            <!--
+            The "container" class centers content and limits its width.
+            Look at .container in styles.css to see how it works.
+            -->
+
+            <a href="index.html" class="logo">My Portfolio</a>
+            <!--
+            The logo is just a styled link that points back to the homepage.
+            Update the text to match your site name.
+            -->
+
+            <nav class="main-nav">
+                <!--
+                The <nav> element indicates this is navigation. Screen readers
+                recognize it and can announce "navigation" to users.
+                
+                → Exercise 12: Update these links to point to your sections
+                -->
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!--
+        The <main> element contains the primary content of the page.
+        There should be only one <main> per page.
+        -->
+
+        <section class="hero">
+            <!--
+            The "hero" is the large prominent section at the top of many sites.
+            It typically contains a headline and brief introduction.
+            
+            → Exercise 14: Try changing the background to a gradient in CSS
+            -->
+            <div class="container">
+                <h1>Welcome to My Portfolio</h1>
+                <!--
+                Every page should have one <h1>—the main heading.
+                Screen readers and search engines use headings to understand
+                the page structure.
+                
+                → Exercise 4: Change this to something personal
+                -->
+
+                <p class="hero-text">
+                    I'm a student learning web development, exploring HTML, CSS, and more.
+                    This portfolio showcases my journey and the skills I'm building.
+                </p>
+                <!--
+                → Exercise 5: Rewrite this in your own voice
+                → Exercise 6: Try adding <strong> or <em> tags around key words
+                -->
+
+                <a href="about.html" class="btn btn-primary">Learn More About Me</a>
+                <!--
+                This looks like a button but is actually a link. The difference:
+                <button> is for actions (like submitting a form).
+                <a> is for navigation (going somewhere).
+                This navigates to the about page, so it's a link styled as a button.
+                -->
+            </div>
+        </section>
+
+        <section class="section about-preview">
+            <!--
+            A preview of the about page content. Notice the class "section"—
+            this provides consistent padding across all sections.
+            
+            → Exercise 7: Rewrite the content in this section
+            → Exercise 9: Try adding an image here
+            -->
+            <div class="container">
+                <h2>A Little About Me</h2>
+
+                <div class="card">
+                    <!--
+                    The "card" class creates a contained box with background,
+                    padding, and shadow. You'll see this pattern throughout.
+                    
+                    → Exercise 15, 16: Explore how padding and border-radius work
+                    → Exercise 22: Add hover effects to cards
+                    -->
+                    <p>
+                        This is where you can share a brief introduction about yourself.
+                        What drives you? What are you passionate about learning?
+                        What do you hope to accomplish?
+                    </p>
+
+                    <!-- 
+                    → Exercise 9: Try adding an image here:
+                    
+                    <figure class="profile-image">
+                        <img src="https://picsum.photos/400/300" alt="Description of image">
+                        <figcaption>A caption for your image</figcaption>
+                    </figure>
+                    -->
+
+                    <a href="about.html" class="btn">Read More</a>
+                    <!--
+                    → Exercise 10: Click this link to test navigation
+                    -->
+                </div>
+            </div>
+        </section>
+
+        <!--
+        → Exercise 8: Add your skills section here
+        
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <h2>What I'm Learning</h2>
+                <p>Write something here about skills you're developing.</p>
+                <div class="card">
+                    <h3>Technical Skills</h3>
+                    <p>List some things you're learning or want to learn.</p>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!--
+        → Exercise 11: Add your contact section here
+        
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>I'd love to hear from you.</p>
+                <a href="mailto:your.email@example.com" class="btn">Send Me an Email</a>
+            </div>
+        </section>
+        -->
+
+    </main>
+
+    <footer>
+        <!--
+        The footer typically contains copyright info and secondary links.
+        
+        → Exercise 21: Check out the CSS that pushes this to the bottom
+        -->
+        <div class="container">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <!--
+            &copy; is an HTML entity that displays the © symbol.
+            Update the year and name.
+            -->
+        </div>
+    </footer>
+
+</body>
+</html>
